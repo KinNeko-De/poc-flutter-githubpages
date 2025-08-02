@@ -20,9 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+        working-directory: sample_flutter
 
       - name: Build web
         run: flutter build web --base-href /poc-flutter-githubpages/
-
+        working-directory: sample_flutter
 
 
