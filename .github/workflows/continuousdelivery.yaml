@@ -23,7 +23,7 @@ jobs:
         working-directory: sample_flutter
 
       - name: Build web
-        run: flutter build web --base-href /poc-flutter-githubpages/
+        run: flutter build web --base-href /${{ github.event.repository.name }}/
         working-directory: sample_flutter
 
       - name: Upload artifact
@@ -37,6 +37,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
