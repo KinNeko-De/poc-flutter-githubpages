@@ -4,6 +4,10 @@ on:
     branches:
       - main # name of the branch you are pushing to
 
+env:
+  PATH_TO_APP : sample_flutter
+  BUILD_OUTPUT_DIR: ./build/web
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,16 +24,16 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: sample_flutter
+        working-directory: ${{ env.PATH_TO_APP }}
 
       - name: Build web
-        run: flutter build web --base-href /${{ github.event.repository.name }}/
-        working-directory: sample_flutter
+        run: flutter build web --base-href /${{ github.event.repository.name }}/ -o ${{ env.BUILD_OUTPUT_DIR }}
+        working-directory: ${{ env.PATH_TO_APP }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./sample_flutter/build/web
+          path: ${{ env.BUILD_OUTPUT_DIR }}
 
   deploy:
     needs: build
