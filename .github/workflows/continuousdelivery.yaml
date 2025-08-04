@@ -1,8 +1,6 @@
 name: Deploy Flutter Web to GitHub Pages
 on:
   push:
-    branches:
-      - main # name of the branch you are pushing to
 
 env:
   PATH_TO_APP : sample_flutter
