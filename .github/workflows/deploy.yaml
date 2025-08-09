@@ -12,6 +12,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
+      actions: read
     environment:
       name: github-pages
     steps:
@@ -21,6 +22,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
           name: web-build
       - name: Setup Pages
         uses: actions/configure-pages@v5
