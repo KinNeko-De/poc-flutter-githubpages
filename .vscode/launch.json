@@ -43,6 +43,30 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "Flutter Web (Chrome)",
+            "cwd": "sample_flutter",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "chrome"]
+        },
+        {
+            "name": "Flutter Web (Chrome, profile mode)",
+            "cwd": "sample_flutter",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "chrome"],
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Flutter Web (Chrome, release mode)",
+            "cwd": "sample_flutter",
+            "request": "launch",
+            "type": "dart",
+
+            "args": ["-d", "chrome"],
+            "flutterMode": "release"
         }
     ]
 }
