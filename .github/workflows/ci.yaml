@@ -34,5 +34,10 @@ jobs:
         uses: actions/upload-artifact@v4
         if: github.ref == 'refs/heads/main'
         with:
-          name: github-pages
+          name: build-web
+          path: ${{ env.BUILD_OUTPUT_DIR }}
+      - name: Upload artifact pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
           path: ${{ env.BUILD_OUTPUT_DIR }}
