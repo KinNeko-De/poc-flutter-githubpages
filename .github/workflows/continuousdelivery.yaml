@@ -4,7 +4,6 @@ on:
 
 env:
   PATH_TO_APP : sample_flutter
-  BUILD_OUTPUT_DIR: ${{ github.workspace }}/build/web
 
 jobs:
   build:
@@ -26,14 +25,14 @@ jobs:
         working-directory: ${{ env.PATH_TO_APP }}
 
       - name: Build web
-        run: flutter build web --base-href /${{ github.event.repository.name }}/ -o ${{ env.BUILD_OUTPUT_DIR }}
+        run: flutter build web --base-href /${{ github.event.repository.name }}/
         working-directory: ${{ env.PATH_TO_APP }}
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_OUTPUT_DIR }}
+          path: ${{ env.PATH_TO_APP }}/build/web
 
   deploy:
     needs: build
