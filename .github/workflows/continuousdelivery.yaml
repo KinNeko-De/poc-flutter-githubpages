@@ -30,7 +30,6 @@ jobs:
 
       - name: Build web
         run: flutter build web --base-href "${{ steps.pages.outputs.base_path }}/"
-        working-directory: ${{ env.PATH_TO_APP }}
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'
@@ -47,7 +46,6 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy
         id: deployment
